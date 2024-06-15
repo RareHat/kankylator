@@ -1,4 +1,7 @@
 from PyQt6.QtWidgets import*
+
+from n.l import settings
+
 app = QApplication([])
 window = QWidget()
 window.resize(700,500)
@@ -21,6 +24,10 @@ QWidget {
         color: green;        font-size: 20px;
         font-family: Impact;        border-width: 4px;
         border-color: grey;        border-radius: 5px;
+      }
+      QLineEdit {
+        background-color: white;   
+        
       }
  """)
 main_line = QVBoxLayout()
@@ -47,6 +54,7 @@ zero_btn = QPushButton("0")
 tochka_btn = QPushButton(".")
 answer_btn = QPushButton("=")
 AC_btn = QPushButton("AC")
+sett_btn = QPushButton("n/l")
 main_line.addWidget(wikno)
 h1.addWidget(seven_btn)
 h1.addWidget(visim_btn)
@@ -71,6 +79,7 @@ h4.addWidget(answer_btn)
 main_line.addLayout(h4)
 
 h5.addWidget(AC_btn)
+h5.addWidget(sett_btn)
 main_line.addLayout(h5)
 def plus_funk():
     text = wikno.text()
@@ -163,6 +172,7 @@ def answer_funk():
     wikno.setText(text)
 
 answer_btn.clicked.connect(answer_funk)
+
 def tochka_funk():
     text = wikno.text()
     text += '.'
@@ -173,6 +183,8 @@ def AC_funk():
     text = wikno.text()
     text = text[:len(text)-1]
     wikno.setText(text)
+
+sett_btn.clicked.connect(settings)
 AC_btn.clicked.connect(AC_funk)
 window.setLayout(main_line)
 window.show()
