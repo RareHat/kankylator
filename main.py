@@ -1,8 +1,8 @@
 from PyQt6.QtWidgets import*
 
 from n.l import settings
+from res import app
 
-app = QApplication([])
 window = QWidget()
 window.resize(700,500)
 app.setStyleSheet("""     

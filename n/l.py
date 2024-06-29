@@ -1,29 +1,30 @@
 from PyQt6.QtWidgets import*
+
+from res import app
+from themes import theme1, theme2
+
+
 def settings():
     window = QDialog()
-
     main_line = QVBoxLayout()
+    h1 = QHBoxLayout()
+    br_btn = QPushButton("синьо-червона")
+    pw_btn = QPushButton("рожево_біла")
+    gp_btn = QPushButton("сіро-фіолетова")
+    h1.addWidget(br_btn)
+    h1.addWidget(pw_btn)
+    h1.addWidget(gp_btn)
+    main_line.addLayout(h1)
 
+    def change():
+        app.setStyleSheet(theme1)
+
+    br_btn.clicked.connect(change)
+
+    def change():
+        app.setStyleSheet(theme2)
+
+    pw_btn.clicked.connect(change)
     window.setLayout(main_line)
     window.show()
     window.exec()
-
-("""     QWidget {
-        background: #ccdaed;     }
-     QPushButton {        background: #e9edf2;
-        border-style: outset;        min-height: 30px;
-        min-width: 100px;     }
-     QListWidget {         background: #ccdbd5;
-     }     QTextEdit { 
-        background: #e1ede8;     }
-      QPushButton {
-        color: green;        font-size: 15px;
-        font-family: Impact;        border-width: 2px;
-        border-color: red;        border-radius: 5px;
-     }
-      QPushButton#save_btn {
-        color: green;        font-size: 20px;
-        font-family: Impact;        border-width: 4px;
-        border-color: red;        border-radius: 5px;
-      }
- """)
